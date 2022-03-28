@@ -19,13 +19,14 @@ const parseImage = async (value) => {
     console.log(imageUrl);
 }
 
-const forestImage = (index) => {
-    const url = `http://openapi.forest.go.kr/openapi/service/cultureInfoService/fStoryImgOpenAPI?searchWrd=${index}&ServiceKey=${process.env.REACT_APP_FOREST_API}`;
+const forestImage = (index, setDataArr) => {
+    console.log(index);
+    // const url = `http://openapi.forest.go.kr/openapi/service/cultureInfoService/fStoryImgOpenAPI?searchWrd=${index}&ServiceKey=${process.env.REACT_APP_FOREST_API}`;
 
-    fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(url)}`)
-        .then(el => el.text())
-        .then(ele => parseStr(ele))
-        .catch(err => console.log(err));
+    // fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(url)}`)
+    //     .then(el => el.text())
+    //     .then(ele => parseStr(ele))
+    //     .catch(err => console.log(err));
 }
 
 export default forestImage;
