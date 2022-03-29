@@ -1,5 +1,5 @@
 import './App.css';
-import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
+import { BrowserRouter, Link } from "react-router-dom";
 import Main from './pages/Main';
 
 const App = () => {
@@ -9,11 +9,9 @@ const App = () => {
       <div>version 6 test</div>
       <BrowserRouter>
         <div>
-          <button> <Link to='/'>컴포넌트 1 가기</Link> </button>
+          <button> <Link to='/'>Home</Link> </button>
         </div>
-        <Routes>
-            <Route exact path="/" element={<Main/>} />
-        </Routes>
+        <Main/>
       </BrowserRouter>      
     </div>
   );

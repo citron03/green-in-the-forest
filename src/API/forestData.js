@@ -22,21 +22,24 @@ const parseStr = (dataSet, setDataObj) => {
         } else {
            reject(new Error("데이터를 불러올 수 없습니다."));
         }
-     })
+     });
 }
 
-const forestData = (item = "", setDataObj) => {
+const forestData = async (item = "", setDataObj) => {
 
     let url = `http://openapi.forest.go.kr/openapi/service/cultureInfoService/fStoryOpenAPI?ServiceKey=${process.env.REACT_APP_FOREST_API}`;
     if(item !== ""){
         // 검색 키워드가 있는 경우
         url = `http://openapi.forest.go.kr/openapi/service/cultureInfoService/fStoryOpenAPI?searchWrd=${item}&ServiceKey=${process.env.REACT_APP_FOREST_API}`;
     }
-    fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(url)}`)
+    const detchData = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(url)}`)
         .then(el => el.text())
         .then(ele => parseStr(ele, setDataObj))
         .then(idx => forestImage(idx, setDataObj)) // parseStr는 Promise 객체를 반환한다. 인덱스를 바탕으로 이미지를 세팅한다.
         .catch(err => console.log(err));
+        
+    // console.log(detchData);
+    // return detchData;
 }
 
 export default forestData;
