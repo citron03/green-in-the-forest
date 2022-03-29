@@ -13,7 +13,8 @@ const PlantViewContainer = styled.div`
 `;
 
 
-const PlantView = ({num, name, lifeTime, image}) => {
+const PlantView = ({num, name, image}) => {
+
     return (
     <Link to={`plant/${num}`}>
         <PlantViewContainer>

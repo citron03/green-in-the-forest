@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
 import PlantList from "../components/PlantList";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, Link } from "react-router-dom";
 import PlantDetail from '../components/PlantDetail';
 
 const Main = () => {
@@ -18,7 +18,9 @@ const Main = () => {
         <h1>메인 페이지</h1>
         <label>검색 하세요</label>
         <input type="text" ref={searchInput} placeholder="찾고 싶은 숲속 식물이 있나요?"/>
-        <button onClick={searchHandle}>검색!</button>
+        <button onClick={searchHandle}>
+            <Link to='/'>검색!</Link>
+        </button>
         <Routes>
             <Route exact path="/" element={<PlantList search={searchKeyword}/>} />
             <Route path="/plant" element={<PlantDetail/>} />
