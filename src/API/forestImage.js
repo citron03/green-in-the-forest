@@ -29,9 +29,9 @@ const forestImage = async (obj) => {
     const num = obj.index.length;
 
     for(let i of obj.index){
-        const url = `http://openapi.forest.go.kr/openapi/service/cultureInfoService/fStoryImgOpenAPI?searchWrd=${i.value}&ServiceKey=${process.env.REACT_APP_FOREST_API}`;
+        const url = `/fStoryImgOpenAPI?searchWrd=${i.value}&ServiceKey=${process.env.REACT_APP_FOREST_API}`;
         // 받아온 인덱스로 이미지를 가져온다.
-        const imageData = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(url)}`)
+        const imageData = await fetch('/api' + url)
             .then(el => el.text())
             .then(ele => parseStr(ele, imagesArr, num, obj))
             .catch(err => console.log(err));

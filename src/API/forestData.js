@@ -13,8 +13,12 @@ const parseStr = (dataSet) => {
             const name = dataXml[1].getElementsByTagName("fskname"); // 식물명
             const lifetime = dataXml[1].getElementsByTagName("fslifetime"); // 식물의 일생
             const index = dataXml[1].getElementsByTagName("fslistno"); // 숲이야기순번 --> 이미지 검색에 사용된다.
-            
-           resolve({name, lifetime, index}); // 객체 형태로 데이터 전달
+            const guide = dataXml[1].getElementsByTagName("fsguide"); // 식물에 대한 안내
+            const inhabit = dataXml[1].getElementsByTagName("fsinhabit"); // 서식 장소
+            const register = dataXml[1].getElementsByTagName("fsregister"); // 식물자료제공
+            const offer = dataXml[1].getElementsByTagName("fsoffer"); // 식물이야기 설명
+
+           resolve({name, lifetime, index, guide, inhabit, register, offer}); // 객체 형태로 데이터 전달
         } else {
            reject(new Error("데이터를 불러올 수 없습니다."));
         }
@@ -23,12 +27,12 @@ const parseStr = (dataSet) => {
 
 const forestData = async (item = "") => {
 
-    let url = `http://openapi.forest.go.kr/openapi/service/cultureInfoService/fStoryOpenAPI?ServiceKey=${process.env.REACT_APP_FOREST_API}`;
+    let url = `/fStoryOpenAPI?ServiceKey=${process.env.REACT_APP_FOREST_API}`;
     if(item !== ""){
         // 검색 키워드가 있는 경우
-        url = `http://openapi.forest.go.kr/openapi/service/cultureInfoService/fStoryOpenAPI?searchWrd=${item}&ServiceKey=${process.env.REACT_APP_FOREST_API}`;
+        url = `/fStoryOpenAPI?searchWrd=${item}&ServiceKey=${process.env.REACT_APP_FOREST_API}`;
     }
-    const fetchData = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(url)}`)
+    const fetchData = await fetch('/api' + url)
         .then(el => el.text())
         .then(ele => parseStr(ele))
         .then(obj => forestImage(obj)) // parseStr는 Promise 객체를 반환한다. 인덱스를 바탕으로 이미지를 세팅한다.

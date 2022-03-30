@@ -1,18 +1,28 @@
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
+import styled from "styled-components";
+
+const PlantDetailContainer = styled.div`
+    margin: 1rem;
+    padding: 1rem;
+    border: 0.1rem solid green;
+`;
 
 const PlantDetail = () => {
     const param = useParams();
     const state = useSelector(state => state.fetchReducer);
-    const detailData = state.filter(el => el[0] === param.num);
+    const detailData = state.filter(el => el.index === param.num)[0];
 
-    return (<div>
-        <p>{detailData[0][1]}</p>
-        <p>{detailData[0][2]}</p>
-        {detailData[0][3].map((el, idx) => {
+return (<PlantDetailContainer>
+        <p>{detailData.name}</p>
+        <p>{detailData.guide}</p>
+        <p>서식 장소 : {detailData.inhabit}</p>
+        <p>{detailData.lifeTime}</p>
+        {detailData.image.map((el, idx) => {
             return <img src={el} key={idx} alt={idx} />
         })}
-    </div>);
+        <p>식물 자료 제공 : {detailData.register}</p>
+    </PlantDetailContainer>);
 }
 
 export default PlantDetail;

@@ -23,7 +23,7 @@ const PlantList = ({search}) => {
     useEffect(() => {
         setIsLoading(true); // 로딩 시작
         dispatch(setData(search)); // 데이터를 가져오는 API에서 이미지 API를 불러 이미지도 dataArr에 저장하게 한다.
-    }, [search])
+    }, [search, dispatch])
 
     useEffect(() => {
         // 데이터를 가공한다.
@@ -42,7 +42,9 @@ const PlantList = ({search}) => {
             NoData ? <NoSearchData/> :
                 dataObj
                     .map(el => {
-                        return <PlantView key={el[0]} name={el[1]} lifeTime={el[2]} image={el[3]} num={el[0]} />})
+                        return <PlantView key={el.index} 
+                            name={el.name} lifeTime={el.lifeTime} 
+                            image={el.image} num={el.index} offer={el.offer}/>})
             }</ListContainer>
 }
 
