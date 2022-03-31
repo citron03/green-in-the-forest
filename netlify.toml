@@ -1,6 +1,6 @@
 [[redirects]]
   from = "/api/*"
-  to = "http://openapi.forest.go.kr/openapi/service/cultureInfoService:splat"
+  to = "http://openapi.forest.go.kr/openapi/service/cultureInfoService/:splat"
   status = 200
 
 [[redirects]]
