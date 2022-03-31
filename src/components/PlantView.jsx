@@ -16,7 +16,9 @@ const ImageAndNameDiv = styled.div`
 `;
 
 const PlantViewContainer = styled.div`
-    border: 1px solid purple;
+    border: 1px solid black;
+    border-radius: 50px;
+    background-color: #e6f3eb;
     padding: 1.5rem;
     margin: 1.5rem;
     opacity: 1;
@@ -26,7 +28,7 @@ const PlantViewContainer = styled.div`
           opacity: 1;
         }
         ${ImageAndNameDiv}{
-            opacity: 0.45;
+            opacity: 0.3;
         }
     }
 `;
@@ -38,7 +40,7 @@ const PlantView = ({num, name, image, offer}) => {
     <Link to={`plant/${num}`} style={{"textDecoration": "none"}}>
         <PlantViewContainer>
             <ImageAndNameDiv>
-                <p>{name}</p>
+                <h3>{name}</h3>
                 <img src={image[0]} alt={name} />
             </ImageAndNameDiv>
             <HoverOfferSpan>{offer}</HoverOfferSpan>

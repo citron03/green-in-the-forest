@@ -9,7 +9,8 @@ import { setData } from "../redux/action";
 const ListContainer = styled.div`
     border: 1px solid black;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: ${({isLoading, NoData}) => isLoading || NoData ? "1fr" : "1fr 1fr 1fr"};
+    /* grid-template-columns: repeat(3, 1fr); */
     grid-auto-rows: minmax(100px, auto);
 `;
 
@@ -37,14 +38,15 @@ const PlantList = ({search}) => {
         }
     }, [dataObj]);
 
-    return <ListContainer>
+    return <ListContainer isLoading={isLoading} NoData={NoData}>
         {isLoading ? <Loading/> : 
             NoData ? <NoSearchData/> :
                 dataObj
                     .map(el => {
-                        return <PlantView key={el.index} 
+                        return (
+                        <PlantView key={el.index} 
                             name={el.name} lifeTime={el.lifeTime} 
-                            image={el.image} num={el.index} offer={el.offer}/>})
+                            image={el.image} num={el.index} offer={el.offer}/>)})
             }</ListContainer>
 }
 

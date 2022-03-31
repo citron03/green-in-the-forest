@@ -1,17 +1,15 @@
 import './App.css';
-import { BrowserRouter, Link } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import Main from './pages/Main';
+import Footer from './components/Footer';
 
 const App = () => {
 
   return (
     <div className="App">
-      <div>version 6 test</div>
       <BrowserRouter>
-        <div>
-          <button> <Link to='/'>Home</Link> </button>
-        </div>
         <Main/>
+        <Footer/>
       </BrowserRouter>      
     </div>
   );
