@@ -3,6 +3,7 @@
 
 ### 배포 사이트 : https://green-in-the-forest.netlify.app/
 
+* 이 웹사이트는 grid 레이아웃을 사용하여, PC에 최적화 되어있습니다.
 * 공공데이터 OpenAPI - 산림청 숲에 사는 식물정보를 사용한 식물 검색 웹 사이트
 * netlify를 통해 배포하였습니다.
 * react-xml-parser을 이용하여 XML을 파싱하였다.
