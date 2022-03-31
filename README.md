@@ -1,6 +1,8 @@
 # green-in-the-forest
 ## 숲에서 만날 수 있는 식물들
 
+### 배포 사이트 : https://green-in-the-forest.netlify.app/
+* netlify를 통해 배포하였습니다.
 * 공공데이터 OpenAPI - 산림청 숲에 사는 식물정보를 사용한 식물 검색 웹 사이트
 * react-xml-parser을 이용하여 XML을 파싱하였다.
 * http-proxy-middleware 라이브러리를 통해서 cors 문제를 해결하였다.
